@@ -1,1 +1,1 @@
-# 02_sum_address_actions
+# 02_sum_address_actions DB上のURLの住所を取得してaddresssheetに保存する
