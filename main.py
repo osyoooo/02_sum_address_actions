@@ -26,9 +26,12 @@ GEOCODING_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
 # 環境変数からAPIキーを読み込む
 API_KEY = os.getenv('GOOGLEAPIKEY')
 
-# 環境変数から認証用のjsonyoを読み込む
-credentials_json = os.environ['CREDENTIALS_JSON']
-credentials = Credentials.from_service_account_file(credentials_json, scopes=scope)
+# 環境変数からサービスアカウントキーのJSONコンテンツを取得
+credentials_json_str = os.environ['CREDENTIALS_JSON']
+credentials_info = json.loads(credentials_json_str)
+
+# 認証情報を生成
+credentials = Credentials.from_service_account_info(credentials_info, scopes=scope)
 
 #認証情報を取得
 gc = gspread.authorize(credentials)
